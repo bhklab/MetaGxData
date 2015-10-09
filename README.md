@@ -26,15 +26,20 @@ We developed and tested our analysis pipeline using R running on linux and Mac O
 
 To mimic our software environment the following R packages should be installed. All these packages are available on CRAN or Bioconductor.
 
-* R version 3.2.0 Patched (2015-05-20 r68389)
-* Platform: x86_64-apple-darwin10.8.0 (64-bit)
-* Running under: OS X 10.9.5 (Mavericks)
-* locale:
-[1] en_CA.UTF-8/en_CA.UTF-8/en_CA.UTF-8/C/en_CA.UTF-8/en_CA.UTF-8
-* attached base packages:
-[1] stats4    parallel  stats     graphics  grDevices utils     datasets  methods   base     
-* other attached packages:
+```
+R version 3.2.0 Patched (2015-05-20 r68389)
 
+Platform: x86_64-apple-darwin10.8.0 (64-bit)
+
+Running under: OS X 10.9.5 (Mavericks)
+
+locale:
+[1] en_CA.UTF-8/en_CA.UTF-8/en_CA.UTF-8/C/en_CA.UTF-8/en_CA.UTF-8
+
+attached base packages:
+[1] stats4    parallel  stats     graphics  grDevices utils     datasets  methods   base     
+
+other attached packages:
  [1] metafor_1.9-7          Matrix_1.2-0           hgu133plus2.db_3.1.3   org.Hs.eg.db_3.1.2    
  [5] RSQLite_1.0.0          DBI_0.3.1              reshape2_1.4.1         genefu_2.0.3          
  [9] AIMS_1.0.0             e1071_1.6-4            iC10_1.1.2             iC10TrainingData_1.0.1
@@ -43,8 +48,9 @@ To mimic our software environment the following R packages should be installed. 
 [21] ggplot2_1.0.1          annotate_1.46.0        XML_3.98-1.2           AnnotationDbi_1.30.1  
 [25] GenomeInfoDb_1.4.0     IRanges_2.2.2          S4Vectors_0.6.0        gdata_2.16.1          
 [29] knitr_1.10.5           MetaGxBreast_2.3       MetaGxOvarian_2.3      Biobase_2.28.0        
-[33] BiocGenerics_0.14.0   
-* loaded via a namespace (and not attached):
+[33] BiocGenerics_0.14.0 
+
+loaded via a namespace (and not attached):
  [1] gtools_3.5.0       lattice_0.20-31    splines_3.2.0      colorspace_1.2-6   amap_0.8-14       
  [6] plyr_1.8.3         lava_1.4.0         stringr_1.0.0      munsell_0.4.2      survivalROC_1.0.3 
 [11] gtable_0.1.2       class_7.3-12       proto_0.3-10       Rcpp_0.12.0        KernSmooth_2.23-14
@@ -52,6 +58,7 @@ To mimic our software environment the following R packages should be installed. 
 [21] SuppDists_1.1-9.1  grid_3.2.0         tools_3.2.0        bitops_1.0-6       magrittr_1.5      
 [26] RCurl_1.95-4.7     MASS_7.3-40       
 
+```
 
 
 The latest version of MetaGxBreast and MetaGxOvarian and genefu, can be installed using the following commands:
