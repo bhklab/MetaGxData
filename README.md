@@ -34,6 +34,7 @@ To mimic our software environment the following R packages should be installed. 
 * attached base packages:
 [1] stats4    parallel  stats     graphics  grDevices utils     datasets  methods   base     
 * other attached packages:
+
  [1] metafor_1.9-7          Matrix_1.2-0           hgu133plus2.db_3.1.3   org.Hs.eg.db_3.1.2    
  [5] RSQLite_1.0.0          DBI_0.3.1              reshape2_1.4.1         genefu_2.0.3          
  [9] AIMS_1.0.0             e1071_1.6-4            iC10_1.1.2             iC10TrainingData_1.0.1
@@ -61,46 +62,37 @@ install.packages("MetaGxOvarian")
 install_github("genefu", username="bhaibeka", ref="master")
 ```
 
-Once the packages are installed, uncompress the archive provided as Supplementary data accompanying the manuscript. This should create a directory on the file system containing the following files:
-* apobec .pipeline.R Master script running all the scripts listed above to generate the analysis results.
-* apobec data TCGA.R Script to to downlaod and format TCGA data.
-* apobec data METABRIC.R Script to to downlaod and format METABRIC data.
-* apobec analysis.R Script generating all the figures and tables reported in the manuscript. 
+Once the packages are installed, please download this github repository. 
+This repository contains three folders: 
+* Single_Gene_Prognosis_Breast: scripts and data to replicate Figure 4
+* Single_Gene_Prognosis_Ovarian: scripts and data to replicate Figure 5
+* Genomewide_Prognosis: scripts and data to replicate Figure 6
 
-These files should be downloaded and pu in a directory called 'gsea':
-* gsea2-2.1.0.jar GSEA java executable; it can also be downloaded from the GSEA website.
-* c5.all.v4.0.entrez.gmt Definition of gene sets based on EntrezGene IDs;it can also be downloaded from the GSEA website.
+Two of the folders conduct the analysis of the prognostic value of single genes,
+using either the MetaGxBreast or MetaGxOvarian package. 
 
-All the files required to run the automated analysis pipeline are now in place. It is worth noting that raw gene expression and drug sensitivity data are voluminous, please ensure that at least 5GB of storage are available.
+The Genomewide_Prognosis folder contains scripts to conduct a larger, genome-wide assessment 
+of the prognositic value of genes that are common to both the MetaGxBreast and MetaGxOvarian packages. 
 
-## Run the R scripts
+## Run the R scripts for Single_Gene_Prognosis
 
-Open a terminal window and go to the apobec directory. You can easily run the analysis pipeline either in batch mode or in a R session. Before running the pipeline you can specify the number of CPU cores you want to allocate to the analysis (by default only 1 CPU core will be used). To do so, open the script apobec pipeline.R and update line #33:
-
-```
-nbcore <- 4
-````
-
-to allocate four CPU cores for instance.
-
-To run the full pipeline in batch mode, simply type the following command:
+Open a terminal window and go to the Single_Gene_Prognosis directory of your choice, dependant on the cancer type. 
+Simply type the following command:
 
 ```
-R CMD BATCH apobec pipeline.R Rout &
-````
-
-The progress of the pipeline could be monitored using the following command:
+Rscript -e "library(knitr); knit('brca.prognosis.metaanalysis.Rnw')"
+```
+OR
 
 ```
-tail -f Rout
+Rscript -e "library(knitr); knit('ovca.prognosis.metaanalysis.Rnw')"
 ````
 
-To run the full analysis pipeline in an R session, simply type the following command:
+## Run the R scripts for Genomewide_Prognosis
 
-```
-source("apobec pipeline.R")
-````
+To conduct the genome-wide analysis for each tumour type, simply run in the R terminal either of the following scripts:
 
-Key messages will be displayed to monitor the progress of the analysis.
+* RunBrCaseStudy.R
+* RunOvCaseStudy.R
 
-The analysis pipeline was developed so that all intermediate analysis results are saved in the directories data and saveres. Therefore, in case of interruption, the pipeline will restart where it stopped
+
