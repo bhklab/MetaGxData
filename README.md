@@ -106,6 +106,6 @@ Followed by:
 
 * Determine_PrognosticGenes.R 
 
-which determines the common prognostic genes across both breast and ovarian cancer data (Figure 6)
+which determines the common prognostic genes across both breast and ovarian cancer data (Fig 6)
 
 
