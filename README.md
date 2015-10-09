@@ -102,4 +102,10 @@ To conduct the genome-wide analysis for each tumour type, simply run in the R te
 * RunBrCaseStudy.R
 * RunOvCaseStudy.R
 
+Followed by:
+
+* Determine_PrognosticGenes.R 
+
+which determines the common prognostic genes across both breast and ovarian cancer data (Figure 6)
+
 
