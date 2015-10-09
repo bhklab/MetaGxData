@@ -1,0 +1,192 @@
+%\VignetteEngine{knitr::knitr}
+
+<<setup, include=FALSE, cache=FALSE>>=
+# Set options
+knitr::opts_chunk$set(include=TRUE, results="hide", fig.width=8, fig.height=8, fig.path='figures/', fig.align='center', fig.show='hold',warning=FALSE, echo=FALSE, message=FALSE, cache=TRUE)
+options(replace.assign=TRUE,width=90)
+days.per.month <- 30.4368
+days.per.year <- 365.242
+par.original <- par()
+library(knitr)
+library(gdata)
+library(annotate)
+library(ggplot2)
+library(xtable)
+library(genefu)
+library(reshape2)
+library(hgu133plus2.db)
+library(metafor)
+
+strata.term <- TRUE
+meta.analysis <- TRUE
+basal.only <- TRUE
+@
+
+
+\documentclass{article}
+
+\usepackage{graphicx}
+\usepackage{microtype}
+\usepackage[T1]{fontenc}
+\usepackage{float}
+\usepackage[latin1]{inputenc}
+\usepackage{geometry}
+\usepackage{titlesec}
+\usepackage{tabularx}
+\geometry{verbose,tmargin=2.5cm,bmargin=2.5cm,lmargin=2.5cm,rmargin=2.5cm}
+\usepackage[table]{xcolor}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks,
+    citecolor=black,
+    filecolor=black,
+    linkcolor=black,
+    urlcolor=black
+}
+%\newcommand{\sectionbreak}{\clearpage}
+
+\begin{document}
+
+\title{Breast Cancer Prognosis}
+
+%\author{Gregory M. Chen}
+\date{\today}
+\maketitle
+
+
+
+
+<<load_data, cache=FALSE>>=
+source(system.file("extdata", "patientselection.config", package="MetaGxBreast"))
+source(system.file("extdata", "createEsetList.R", package="MetaGxBreast"))
+
+esets <- lapply(esets, function(x) {
+  factor.indices <- sapply(pData(x), is.factor)
+  pData(x)[factor.indices] <- lapply(pData(x)[factor.indices], as.character)
+  return(x)
+  })
+#esets <- lapply(esets, function(x) {
+#  x <- subtypeClassification(x, model = "scmod2")
+#  return(x)
+#  })
+eset.names <- names(esets)
+esets <- lapply(names(esets), function(x) {
+  eset.toreturn <- esets[[x]]
+  eset.toreturn$data.source <- x
+  return(eset.toreturn)
+  })
+names(esets) <- eset.names
+
+gene.table <- read.table("brca.genes.tsv", sep="\t", header=TRUE, stringsAsFactors = FALSE)
+gene.names <- gene.table$Gene.name
+entrez.ids <- gene.table$Entrez.ID
+
+# For each dataset: if it contains some patients with the genes, remove patients with NA values for these genes
+#esets <- lapply(esets, function(eset) {
+#  for(entrez.id in entrez.ids) {
+#    if(entrez.id %in% fData(eset)$EntrezGene.ID) {
+#      index <- which(fData(eset)$EntrezGene.ID == entrez.id)
+#      eset <- eset[, !is.na(exprs(eset)[index,,drop=FALSE]) ]
+#      }
+#  }
+#  return(eset)
+#})
+
+# For each dataset, remove genes that are not represented in all patients
+#esets <- lapply(esets, function(eset) eset[complete.cases(exprs(eset)),])
+
+# only keep patients with survival data
+esets.os <- lapply(esets, function(eset) eset[,!is.na(eset$days_to_death) & !is.na(eset$vital_status)])
+esets.rfs <- lapply(esets, function(eset) eset[,!is.na(eset$recurrence_status) & !is.na(eset$days_to_tumor_recurrence)  |  !is.na(eset$dmfs_status) & !is.na(eset$dmfs_days)])
+
+## Remove datasets that are empty
+esets.os <- esets.os[sapply(esets.os, function(x) ncol(exprs(x)) > 0)]
+esets.rfs <- esets.rfs[sapply(esets.rfs, function(x) ncol(exprs(x)) > 0)]
+rm(esets)
+@
+
+\tableofcontents
+\pagebreak
+\section{Datasets}
+
+<<get_num_genes_datasets>>=
+num.patients <- sum(sapply(esets.rfs, function(x) ncol(exprs(x))))
+num.datasets <- length(esets.rfs)
+
+@
+
+
+From MetaGxBreast, we selected patients from studies which tracked recurence-free survival. When recurrence-free survival was unavailable, we used distant metastatis-free survival.  We identified \Sexpr{num.patients} patients from \Sexpr{num.datasets} datasets.
+<<Dataset_table, results='asis'>>=
+data.counts <- as.data.frame(sapply(esets.rfs, function(x) ncol(exprs(x))))
+colnames(data.counts) <- "Number of samples"
+data.counts <- rbind(data.counts, sum(data.counts[,1]))
+rownames(data.counts)[nrow(data.counts)] <- "Sum"
+xtable(data.counts)
+@
+
+<<single_gene, cache=FALSE, include=FALSE>>=
+knitr.text <- lapply(1:length(entrez.ids), function(current.index) knit_expand(file='brca.single.gene.template.Rnw'))
+
+fixed.effects.pval <- c()
+fixed.effects.estimate <- c()
+fixed.effects.lower <- c()
+fixed.effects.upper <- c()
+rma.objs <- list()
+
+hr.matrix <- matrix(nrow=length(gene.names), ncol=length(esets.rfs))
+rownames(hr.matrix) <- gene.names
+colnames(hr.matrix) <- names(esets.rfs)
+
+knitr.out <- knit(text=unlist(knitr.text))
+@
+
+<<hr_heatmap>>=
+.getHeatmap <- function(stat.matrix) {
+    stat.matrix.m <- melt(stat.matrix)
+    #if(cluster==TRUE) {
+      ord <- hclust(dist(t(log(stat.matrix)), method="euclidean"))$order
+    #}
+    colnames(stat.matrix.m) <- c("Gene", "Dataset", "HR")
+    stat.matrix.m$Gene <- factor(stat.matrix.m$Gene, levels=rev(rownames(stat.matrix)))
+    stat.matrix.m$Dataset <- factor(stat.matrix.m$Dataset, levels=levels(stat.matrix.m$Dataset)[ord])
+    
+    p <- ggplot(stat.matrix.m, aes_string("Dataset", "Gene")) + 
+      geom_tile(aes(fill = HR), colour = "white") + 
+      scale_fill_gradient2(low="#ef8a62", mid="#f7f7f7", high="#67a9cf", trans="log", breaks=c(0.5,1,2), limits=exp(c(-1.14,1.14))) + 
+      theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(), panel.background = element_blank())
+    
+      #geom_text(label=as.character(contingency.matrix), colour="white")
+    return(p)
+}
+@
+
+\section{Summary of Results}
+<<summary_table, results='asis'>>=
+summary.table <- data.frame(gene=gene.names, pval=sprintf("%.5f", fixed.effects.pval), hr.text=sprintf("%.2f [%.2f, %.2f]", fixed.effects.estimate, fixed.effects.lower, fixed.effects.upper))
+colnames(summary.table) <- c("Gene Name", "P-value", "Hazard Ratio")
+print(xtable(summary.table),include.rownames=FALSE)
+
+
+@
+
+<<summary_heatmap, fig.width=13, fig.height=5>>= 
+
+.getHeatmap(exp(hr.matrix))
+@
+
+
+<<summary_forestplot, fig.width=5, fig.height=8>>=
+estimates <- sapply(rma.objs, coef)
+variances <- sapply(rma.objs, vcov)
+
+forest(estimates, variances, atransf=exp, psize=1, efac=0, slab=names(rma.objs), xlab="Hazard Ratio",xlim=c(-2,2), at=log(c(0.25,0.5,1,2,4)))
+addpoly(estimates, variances, rows=length(rma.objs):1, atransf=exp, annotate=FALSE)
+abline(h=0.5, lwd=1)
+@
+
+\pagebreak
+
+\Sexpr{knitr.out}
+
+\end{document}

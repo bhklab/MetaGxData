@@ -1,0 +1,119 @@
+\pagebreak
+\section{\Sexpr{gene.names[{{current.index}}]}}
+
+<<Single_gene_metaanalysis_load_data_{{current.index}}, include=FALSE, cache=FALSE>>=
+# Remove patients with NA values for that gene
+
+if(survival.type == "rfs") {
+  esets.with.gene <- esets.rfs[sapply(esets.rfs, function(x) entrez.ids[{{current.index}}] %in% fData(x)$EntrezGene.ID)]
+} else if(survival.type == "os") {
+  esets.with.gene <- esets.os[sapply(esets.os, function(x) entrez.ids[{{current.index}}] %in% fData(x)$EntrezGene.ID)]
+}
+
+esets.with.gene <- lapply(esets.with.gene, function(eset) {
+  current.entrez.id.index <- which(fData(eset)$EntrezGene.ID == entrez.ids[{{current.index}}])
+  eset.toreturn <- eset[,!is.na(exprs(eset))[current.entrez.id.index,]]
+  return(eset.toreturn)
+  })
+
+survival.df.list <- lapply(esets.with.gene, function(eset) {
+  index <- which(fData(eset)$EntrezGene.ID == entrez.ids[{{current.index}}])
+  if(length(index) != 1) {
+    stop("Found a different number than one matching Entrez ID")
+  }
+  expression.values <- exprs(eset)[index,]
+  expression.quantiles <- cut(expression.values, breaks=quantile(expression.values, probs=c(0,0.5,1)), include.lowest=TRUE)
+  
+  levels(expression.quantiles) <- c("Low", "High")
+  
+  #Re-order so high comes first
+  #expression.quantiles <- factor(expression.quantiles, levels=rev(levels(expression.quantiles)))
+  if(survival.type == "rfs") {
+  colnames.to.keep <- c("days_to_tumor_recurrence", "recurrence_status")
+  } else if(survival.type == "os") {
+    colnames.to.keep <- c("days_to_death", "vital_status")
+  }
+  
+  if("data.source" %in% colnames(pData(eset))) {
+    colnames.to.keep <- c("data.source", colnames.to.keep)
+  }
+  
+  survival.data <- pData(eset)[colnames.to.keep]
+  survival.data[[paste0(rownames(exprs(eset))[index], ".expression")]] <- expression.values
+  survival.data[[paste0(rownames(exprs(eset))[index], ".quantile")]] <- expression.quantiles
+  
+  if(survival.type == "rfs") {
+    survival.data$recurrence_status <- survival.data$recurrence_status == "recurrence"
+    
+    # Rename last two columns
+    colnames(survival.data)[colnames(survival.data) == "days_to_tumor_recurrence"] <- "days_to_event"
+    colnames(survival.data)[colnames(survival.data) == "recurrence_status"] <- "event_status"
+  } else if(survival.type == "os") {
+    survival.data$vital_status <- survival.data$vital_status == "deceased"
+    
+    # Rename last two columns
+    colnames(survival.data)[colnames(survival.data) == "days_to_death"] <- "days_to_event"
+    colnames(survival.data)[colnames(survival.data) == "vital_status"] <- "event_status"
+  }
+  
+  survival.data$years_to_event <- survival.data$days_to_event / days.per.year
+  survival.data$days_to_event <- NULL
+  
+  surv.cens.obj <- survcomp::censor.time(survival.data$years_to_event, survival.data$event_status, time.cens=10)
+  survival.data$years_to_event <- surv.cens.obj$surv.time.cens
+  survival.data$event_status <- surv.cens.obj$surv.event.cens
+  
+  return(survival.data)
+})
+
+@
+
+
+
+<<singlegene_metaanalysis_forestplot_{{current.index}}, fig.width=5, fig.height=7, out.width="0.5\\textwidth", cache=FALSE>>=
+xlim=c(-4,4)
+alim=c(-3,3)
+at=log(c(.25, 0.5, 1, 2, 4))
+
+stat.objects <- lapply(survival.df.list, function(survival.df) {
+    survcomp::hazard.ratio(x=survival.df[[paste0("geneid.", entrez.ids[{{current.index}}], ".quantile")]], surv.time=survival.df$years_to_event, surv.event=survival.df$event_status)
+    })
+
+stat.vals <- sapply(stat.objects, function(x) x$coef)
+stat.se <- sapply(stat.objects, function(x) x$se)  
+rma.random <- rma(stat.vals, sei=stat.se, method="REML", slab=names(survival.df.list))
+
+forest(rma.random, xlab="Hazard Ratio", atransf=exp, refline = 0, annotate=FALSE, addfit=FALSE, ylim=c(-2.5,length(stat.vals) + 3), at=log(c(0.25,0.5,1,2,4)), xlim=xlim, alim=alim, main=paste0("Meta-analysis: ", gene.names[{{current.index}}]))
+abline(h=0, lwd=1)
+addpoly(rma.random, mlab="Random Effects Estimate", row=-1, atransf=exp, annotate=TRUE)
+
+hr.matrix[gene.names[{{current.index}}],names(stat.vals)] <- stat.vals
+rma.objs[[gene.names[{{current.index}}]]] <- rma.random
+@
+
+<<survival_curve_{{current.index}}, fig.width=5, fig.height=5.5, out.width="0.5\\textwidth", cache=FALSE>>=
+survival.df.combined <- do.call(rbind, survival.df.list)
+
+survival.df.combined$surv.obj <- Surv(time = survival.df.combined$years_to_event, event = survival.df.combined$event_status)
+
+main.title = paste0("Pooled survival: ", gene.names[{{current.index}}])
+if(survival.type == "rfs") {
+  ylab =  "Recurrence-free survival"
+} else if(survival.type == "os") {
+  ylab = "Overall survival"
+  }
+km.coxph.plot(as.formula(paste0("surv.obj ~ geneid.", entrez.ids[{{current.index}}], ".quantile")), survival.df.combined, x.label="Time (years)", y.label = ylab, main.title=main.title, show.n.risk = FALSE, leg.text = levels(survival.df.combined[[paste0("geneid.", entrez.ids[{{current.index}}], ".quantile")]]), leg.pos="topright", leg.bty="n", leg.inset=0, n.risk.cex=0.85, cex=0.4, o.text="")
+
+o.text <- paste(sprintf("HR: %.3f [%.3f,%.3f]\n", exp(rma.random$b), exp(rma.random$ci.lb), exp(rma.random$ci.ub)), sprintf("p = %.1E", rma.random$pval))
+text(0,0.05, o.text, cex=0.85, pos=4)
+
+fixed.effects.pval[{{current.index}}] <- rma.random$pval
+# create.forest.plot returns log2(HR)
+fixed.effects.estimate[{{current.index}}] <- exp(as.vector(rma.random$b))
+fixed.effects.lower[{{current.index}}] <- exp(rma.random$ci.lb)
+fixed.effects.upper[{{current.index}}] <- exp(rma.random$ci.ub)
+@
+
+
+\noindent Random effects model:
+\Sexpr{sprintf("%.02f [%.02f, %.02f], p = %.1E", exp(as.vector(rma.random$b)), exp(rma.random$ci.lb), exp(rma.random$ci.ub), rma.random$pval)}
