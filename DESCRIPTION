@@ -1,0 +1,16 @@
+Package: MetaGxOvarian
+Type: Package
+Title: Transcriptomic Ovarian Cancer Datasets
+Version: 0.99.0
+Date: 2015-11-11
+Author: Deena M.A. Gendoo  <deena.gendoo@utoronto.ca>, Benjamin Haibe-Kains <benjamin.haibe.kains@utoronto.ca>
+Maintainer: Deena M.A. Gendoo <deena.gendoo@utoronto.ca>
+Description: A collection of Ovarian Cancer Transcriptomic Datasets that are part of the MetaGxData package compendium. 
+License: Artistic-2.0
+Depends: Biobase, lattice, R (>= 2.10)
+Suggests: knitr
+NeedsCompilation: no
+VignetteBuilder: knitr
+biocViews: Cancer, Microarray, Software
+LazyData: yes
+Packaged: 2015-11-12 20:33:41 UTC; DeenaGendoo
