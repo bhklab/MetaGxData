@@ -5,11 +5,17 @@ In order to install this package the following steps should probably be followed
 4. Use the below lines to install the package
 
 library("devtools")
+
 library(roxygen2)
+
 setwd("C:\\Insert your path here\\MetaGxBreast")
+
 document()
+
 setwd("..")
+
 install("MetaGxBreast")
+
 library(MetaGxBreast)
 
 Note that the package should be available on CRAN eventually so that the above steps are obsolete
