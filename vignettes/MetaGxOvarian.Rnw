@@ -51,20 +51,16 @@
 
 %------------------------------------------------------------
 \section{Installing the Package}
-%------------------------------------------------------------ 
+%------------------------------------------------------------
 
-The MetaGxOvarian package is a compendium of Ovarian Cancer datasets. 
-The package is publicly available and can be installed from CRAN into R version 2.13.0 or higher. 
+The MetaGxOvarian package is a compendium of Ovarian Cancer datasets.
+The package is publicly available and can be installed from CRAN into R version 2.13.0 or higher.
 
-To install the MetaGxOvarian package from CRAN:
-<<installAndLoadPackagesFromCRAN,eval=FALSE,results='hide',message=FALSE>>=
+To install the MetaGxOvarian package from Bioconductor:
+<<installAndLoadPackagesFromBioconductor,eval=FALSE,results='hide',message=FALSE>>=
 knitr::opts_chunk$set(eval=TRUE,cache=TRUE)
-install.packages("MetaGxOvarian")
-@
-
-To install the MetaGxOvarian package locally, first download the source from CRAN and then run the following in the terminal:
-<<installAndLoadPackagesLocal,eval=FALSE,results='hide',message=FALSE>>=
-R CMD INSTALL MetaGxOvarian_2.2.tar.gz
+source("http://bioconductor.org/biocLite.R")
+biocLite("MetaGxOvarian")
 @
 
 Please also load other libraries needed:
@@ -77,8 +73,8 @@ library(tools)
 
 %------------------------------------------------------------
 \section{Loading Datasets}
-%------------------------------------------------------------ 
-First we load the MetaGxOvarian package into the workspace. 
+%------------------------------------------------------------
+First we load the MetaGxOvarian package into the workspace.
 
 To load the packages into R, please use the following commands:
 <<LoadPackages,eval=TRUE,comment="##",results='hide',message=FALSE>>=
@@ -106,7 +102,7 @@ This will load 26 expression datasets, with patients selected according to the d
 
 %------------------------------------------------------------
 \section{Obtaining Sample Counts in Datasets}
-%------------------------------------------------------------ 
+%------------------------------------------------------------
 
 To obtain the number of samples per dataset, run the following:
 
@@ -126,14 +122,14 @@ knitr::kable(SampleNumberSummaryAll,digits = 2)
 
 %------------------------------------------------------------
 \section{Assess Phenotype Data}
-%------------------------------------------------------------ 
+%------------------------------------------------------------
 
-We can also obtain a summary of the phenotype data (pData) for each expression dataset. 
-Here, we assess the proportion of samples in every datasets that contain a specific pData variable. 
+We can also obtain a summary of the phenotype data (pData) for each expression dataset.
+Here, we assess the proportion of samples in every datasets that contain a specific pData variable.
 <<SampleNumberSummariespData,eval=TRUE,comment="##",message=FALSE>>=
 #pData Variables
-pDataID <- c("sample_type", "histological_type", "primarysite", "summarygrade", "summarystage", 
-             "tumorstage", "grade", "age_at_initial_pathologic_diagnosis", "pltx", "tax", "neo", 
+pDataID <- c("sample_type", "histological_type", "primarysite", "summarygrade", "summarystage",
+             "tumorstage", "grade", "age_at_initial_pathologic_diagnosis", "pltx", "tax", "neo",
              "days_to_tumor_recurrence", "recurrence_status", "days_to_death", "vital_status")
 
 
@@ -144,9 +140,9 @@ for(e in 1:length(esets)){
 	pDataPercentSummary <- NULL
 	pDataSummaryNumbers <- NULL
 	for(p in 1:length(pDataID)){
-		pDataSummaryNumbers <- c(pDataSummaryNumbers, 
+		pDataSummaryNumbers <- c(pDataSummaryNumbers,
 		                         sum(!is.na(pData(eset)[,pDataID[p]])))
-		pDataPercentSummary <- c(pDataPercentSummary, 
+		pDataPercentSummary <- c(pDataPercentSummary,
 		                         (sum(!is.na(pData(eset)[,pDataID[p]]))/nrow(pData(eset)))*100)
 
 	}
@@ -196,7 +192,7 @@ levelplot(t(nbamat),col.regions=gradient_colors,main="Available Clinical Annotat
 
 %------------------------------------------------------------
 \section{Session Info}
-%------------------------------------------------------------ 
+%------------------------------------------------------------
 <<sessionInfo,results='asis'>>=
 toLatex(sessionInfo())
 @
