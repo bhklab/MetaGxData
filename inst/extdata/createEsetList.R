@@ -31,6 +31,7 @@ library(Biobase)
 
 # loginfo("Inside script createEsetList.R - inputArgs =")
 # loginfo(inputArgs)
+package.name <- "MetaGxOvarian"
 
 if (!exists("package.name")) package.name <- "MetaGxOvarian"
 
@@ -162,20 +163,20 @@ message("Clean up the esets.")
 for (strEset in strEsets){
     eset <- get(strEset)
     ##Deal with genes which had a single probe mapping to multiple genes
-    # if (exists("probes.not.mapped.uniquely")){
-    #     if(identical(probes.not.mapped.uniquely, "drop")){
-    #         ##Drop rows without unique gene name
-    #         eset <- eset[!grepl("///",featureNames(eset),fixed=TRUE),]
-    #     }else if (identical(probes.not.mapped.uniquely, "split")){
-    #         ##Split out rows without unique gene name
-    #         eset <- expandProbesets(eset)
-    #     }
-    # }
-  if(exists("probe.gene.mapping")){
-    Biobase::exprs(eset) <- exprs(eset)[fData(eset)$best_probe,]
-    Biobase::fData(eset) <- fData(eset)[fData(eset)$best_probe,]
-    rownames(fData(eset)) <- rownames(exprs(eset)) <- paste("geneid.", fData(eset)$EntrezGene.ID, sep="")
-  }
+#     if (exists("probes.not.mapped.uniquely")){
+#         if(identical(probes.not.mapped.uniquely, "drop")){
+#             ##Drop rows without unique gene name
+#             eset <- eset[!grepl("///",featureNames(eset),fixed=TRUE),]
+#         }else if (identical(probes.not.mapped.uniquely, "split")){
+#             ##Split out rows without unique gene name
+#             eset <- expandProbesets(eset)
+#         }
+#     }
+#  if(exists("probe.gene.mapping")){
+#    Biobase::exprs(eset) <- exprs(eset)[fData(eset)$best_probe,]
+#    Biobase::fData(eset) <- fData(eset)[fData(eset)$best_probe,]
+#    rownames(fData(eset)) <- rownames(exprs(eset)) <- paste("geneid.", fData(eset)$EntrezGene.ID, sep="")
+#  }
 
     ## Run ComBat
     if (exists("combat") && combat) {
