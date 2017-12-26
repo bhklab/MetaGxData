@@ -1,9 +1,10 @@
-\name{ GSE17260_eset }
-\alias{ GSE17260_eset }
+\name{ GSE17260 }
+\alias{ GSE17260 }
 \docType{data}
 \title{ Gene expression profile for predicting survival in advanced-stage serous ovarian cancer across two independent datasets. }
 \description{ Advanced-stage ovarian cancer patients are generally treated with platinum/taxane-based chemotherapy after primary debulking surgery. However, there is a wide range of outcomes for individual patients. Therefore, the clinicopathological factors alone are insufficient for predicting prognosis. Our aim is to identify a progression-free survival (PFS)-related molecular profile for predicting survival of patients with advanced-stage serous ovarian cancer.Advanced-stage serous ovarian cancer tissues from 110 Japanese patients who underwent primary surgery and platinum/taxane-based chemotherapy were profiled using oligonucleotide microarrays. We selected 88 PFS-related genes by a univariate Cox model (p<0.01) and generated the prognostic index based on 88 PFS-related genes after adjustment of regression coefficients of the respective genes by ridge regression Cox model using 10-fold cross-validation. The prognostic index was independently associated with PFS time compared to other clinical factors in multivariate analysis [hazard ratio (HR), 3.72; 95\% confidence interval (CI), 2.66-5.43; p<0.0001]. In an external dataset, multivariate analysis revealed that this prognostic index was significantly correlated with PFS time (HR, 1.54; 95\% CI, 1.20-1.98; p = 0.0008). Furthermore, the correlation between the prognostic index and overall survival time was confirmed in the two independent external datasets (log rank test, p = 0.0010 and 0.0008).The prognostic ability of our index based on the 88-gene expression profile in ridge regression Cox hazard model was shown to be independent of other clinical factors in predicting cancer prognosis across two distinct datasets. Further study will be necessary to improve predictive accuracy of the prognostic index toward clinical application for evaluation of the risk of recurrence in patients with advanced-stage serous ovarian cancer. }
 \usage{data( GSE17260_eset )}
+\value{An expression set}
 \format{
 \preformatted{
 experimentData(eset):

@@ -1,9 +1,10 @@
-\name{ PMID15897565_eset }
-\alias{ PMID15897565_eset }
+\name{ PMID15897565 }
+\alias{ PMID15897565 }
 \docType{data}
 \title{ Patterns of gene expression that characterize long-term survival in advanced stage serous ovarian cancers. }
 \description{ A better understanding of the underlying biology of invasive serous ovarian cancer is critical for the development of early detection strategies and new therapeutics. The objective of this study was to define gene expression patterns associated with favorable survival.RNA from 65 serous ovarian cancers was analyzed using Affymetrix U133A microarrays. This included 54 stage III/IV cases (30 short-term survivors who lived <3 years and 24 long-term survivors who lived >7 years) and 11 stage I/II cases. Genes were screened on the basis of their level of and variability in expression, leaving 7,821 for use in developing a predictive model for survival. A composite predictive model was developed that combines Bayesian classification tree and multivariate discriminant models. Leave-one-out cross-validation was used to select and evaluate models.Patterns of genes were identified that distinguish short-term and long-term ovarian cancer survivors. The expression model developed for advanced stage disease classified all 11 early-stage ovarian cancers as long-term survivors. The MAL gene, which has been shown to confer resistance to cancer therapy, was most highly overexpressed in short-term survivors (3-fold compared with long-term survivors, and 29-fold compared with early-stage cases). These results suggest that gene expression patterns underlie differences in outcome, and an examination of the genes that provide this discrimination reveals that many are implicated in processes that define the malignant phenotype.Differences in survival of advanced ovarian cancers are reflected by distinct patterns of gene expression. This biological distinction is further emphasized by the finding that early-stage cancers share expression patterns with the advanced stage long-term survivors, suggesting a shared favorable biology. }
 \usage{data( PMID15897565_eset )}
+\value{An expression set}
 \format{
 \preformatted{
 experimentData(eset):

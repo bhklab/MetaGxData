@@ -1,9 +1,10 @@
-\name{ GSE6822_eset }
-\alias{ GSE6822_eset }
+\name{ GSE6822 }
+\alias{ GSE6822 }
 \docType{data}
 \title{ Classification of ovarian tumor samples }
 \description{ Ouellet V, Provencher DM, Maugard CM, Le Page C, Ren F, Lussier C, Novak J, Ge B, Hudson TJ, Tonin PN, Mes-Masson A-M: Discrimination between serous low malignant potential and invasive epithelial ovarian tumors using molecular profiling. Oncogene 2005, 24:4672-4687. }
 \usage{data( GSE6822_eset )}
+\value{An expression set}
 \format{
 \preformatted{
 experimentData(eset):

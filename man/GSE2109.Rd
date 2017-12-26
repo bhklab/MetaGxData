@@ -1,9 +1,10 @@
-\name{ GSE2109_eset }
-\alias{ GSE2109_eset }
+\name{ GSE2109 }
+\alias{ GSE2109 }
 \docType{data}
 \title{ IGC EXpression Project for Oncology }
 \description{ EXpression Project for Oncology, International Genomics Consortium, www.intgen.org }
 \usage{data( GSE2109_eset )}
+\value{An expression set}
 \format{
 \preformatted{
 experimentData(eset):

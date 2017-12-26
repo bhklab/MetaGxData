@@ -1,9 +1,10 @@
-\name{ GSE6008_eset }
-\alias{ GSE6008_eset }
+\name{ GSE6008 }
+\alias{ GSE6008 }
 \docType{data}
 \title{ Lysophosphatidic acid-induced transcriptional profile represents serous epithelial ovarian carcinoma and worsened prognosis. }
 \description{ Lysophosphatidic acid (LPA) governs a number of physiologic and pathophysiological processes. Malignant ascites fluid is rich in LPA, and LPA receptors are aberrantly expressed by ovarian cancer cells, implicating LPA in the initiation and progression of ovarian cancer. However, there is an absence of systematic data critically analyzing the transcriptional changes induced by LPA in ovarian cancer.In this study, gene expression profiling was used to examine LPA-mediated transcription by exogenously adding LPA to human epithelial ovarian cancer cells for 24 h to mimic long-term stimulation in the tumor microenvironment. The resultant transcriptional profile comprised a 39-gene signature that closely correlated to serous epithelial ovarian carcinoma. Hierarchical clustering of ovarian cancer patient specimens demonstrated that the signature is associated with worsened prognosis. Patients with LPA-signature-positive ovarian tumors have reduced disease-specific and progression-free survival times. They have a higher frequency of stage IIIc serous carcinoma and a greater proportion is deceased. Among the 39-gene signature, a group of seven genes associated with cell adhesion recapitulated the results. Out of those seven, claudin-1, an adhesion molecule and phenotypic epithelial marker, is the only independent biomarker of serous epithelial ovarian carcinoma. Knockdown of claudin-1 expression in ovarian cancer cells reduces LPA-mediated cellular adhesion, enhances suspended cells and reduces LPA-mediated migration.The data suggest that transcriptional events mediated by LPA in the tumor microenvironment influence tumor progression through modulation of cell adhesion molecules like claudin-1 and, for the first time, report an LPA-mediated expression signature in ovarian cancer that predicts a worse prognosis. }
 \usage{data( GSE6008_eset )}
+\value{An expression set}
 \format{
 \preformatted{
 experimentData(eset):

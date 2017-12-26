@@ -1,9 +1,10 @@
-\name{ PMID17290060_eset }
-\alias{ PMID17290060_eset }
+\name{ PMID17290060 }
+\alias{ PMID17290060 }
 \docType{data}
 \title{ An integrated genomic-based approach to individualized treatment of patients with advanced-stage ovarian cancer. }
 \description{ The purpose of this study was to develop an integrated genomic-based approach to personalized treatment of patients with advanced-stage ovarian cancer. We have used gene expression profiles to identify patients likely to be resistant to primary platinum-based chemotherapy and also to identify alternate targeted therapeutic options for patients with de novo platinum-resistant disease.A gene expression model that predicts response to platinum-based therapy was developed using a training set of 83 advanced-stage serous ovarian cancers and tested on a 36-sample external validation set. In parallel, expression signatures that define the status of oncogenic signaling pathways were evaluated in 119 primary ovarian cancers and 12 ovarian cancer cell lines. In an effort to increase chemotherapy sensitivity, pathways shown to be activated in platinum-resistant cancers were subject to targeted therapy in ovarian cancer cell lines.Gene expression profiles identified patients with ovarian cancer likely to be resistant to primary platinum-based chemotherapy with greater than 80\% accuracy. In patients with platinum-resistant disease, we identified expression signatures consistent with activation of Src and Rb/E2F pathways, components of which were successfully targeted to increase response in ovarian cancer cell lines.We have defined a strategy for treatment of patients with advanced-stage ovarian cancer that uses therapeutic stratification based on predictions of response to chemotherapy, coupled with prediction of oncogenic pathway deregulation, as a method to direct the use of targeted agents. }
 \usage{data( PMID17290060_eset )}
+\value{An expression set}
 \format{
 \preformatted{
 experimentData(eset):

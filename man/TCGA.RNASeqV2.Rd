@@ -1,9 +1,10 @@
-\name{ TCGA.RNASeqV2_eset }
-\alias{ TCGA.RNASeqV2_eset }
+\name{ TCGA.RNASeqV2 }
+\alias{ TCGA.RNASeqV2 }
 \docType{data}
 \title{ Integrated genomic analyses of ovarian carcinoma. }
 \description{ A catalogue of molecular aberrations that cause ovarian cancer is critical for developing and deploying therapies that will improve patients' lives. The Cancer Genome Atlas project has analysed messenger RNA expression, microRNA expression, promoter methylation and DNA copy number in 489 high-grade serous ovarian adenocarcinomas and the DNA sequences of exons from coding genes in 316 of these tumours. Here we report that high-grade serous ovarian cancer is characterized by TP53 mutations in almost all tumours (96\%); low prevalence but statistically recurrent somatic mutations in nine further genes including NF1, BRCA1, BRCA2, RB1 and CDK12; 113 significant focal DNA copy number aberrations; and promoter methylation events involving 168 genes. Analyses delineated four ovarian cancer transcriptional subtypes, three microRNA subtypes, four promoter methylation subtypes and a transcriptional signature associated with survival duration, and shed new light on the impact that tumours with BRCA1/2 (BRCA1 or BRCA2) and CCNE1 aberrations have on survival. Pathway analyses suggested that homologous recombination is defective in about half of the tumours analysed, and that NOTCH and FOXM1 signalling are involved in serous ovarian cancer pathophysiology. }
 \usage{data( TCGA.RNASeqV2_eset )}
+\value{An expression set}
 \format{
 \preformatted{
 experimentData(eset):

@@ -1,9 +1,10 @@
-\name{ GSE20565_eset }
-\alias{ GSE20565_eset }
+\name{ GSE20565 }
+\alias{ GSE20565 }
 \docType{data}
 \title{ A genomic and transcriptomic approach for a differential diagnosis between primary and secondary ovarian carcinomas in patients with a previous history of breast cancer. }
 \description{ The distinction between primary and secondary ovarian tumors may be challenging for pathologists. The purpose of the present work was to develop genomic and transcriptomic tools to further refine the pathological diagnosis of ovarian tumors after a previous history of breast cancer.Sixteen paired breast-ovary tumors from patients with a former diagnosis of breast cancer were collected. The genomic profiles of paired tumors were analyzed using the Affymetrix GeneChip Mapping 50 K Xba Array or Genome-Wide Human SNP Array 6.0 (for one pair), and the data were normalized with ITALICS (ITerative and Alternative normaLIzation and Copy number calling for affymetrix Snp arrays) algorithm or Partek Genomic Suite, respectively. The transcriptome of paired samples was analyzed using Affymetrix GeneChip Human Genome U133 Plus 2.0 Arrays, and the data were normalized with gc-Robust Multi-array Average (gcRMA) algorithm. A hierarchical clustering of these samples was performed, combined with a dataset of well-identified primary and secondary ovarian tumors.In 12 of the 16 paired tumors analyzed, the comparison of genomic profiles confirmed the pathological diagnosis of primary ovarian tumor (n = 5) or metastasis of breast cancer (n = 7). Among four cases with uncertain pathological diagnosis, genomic profiles were clearly distinct between the ovarian and breast tumors in two pairs, thus indicating primary ovarian carcinomas, and showed common patterns in the two others, indicating metastases from breast cancer. In all pairs, the result of the transcriptomic analysis was concordant with that of the genomic analysis.In patients with ovarian carcinoma and a previous history of breast cancer, SNP array analysis can be used to distinguish primary and secondary ovarian tumors. Transcriptomic analysis may be used when primary breast tissue specimen is not available. }
 \usage{data( GSE20565_eset )}
+\value{An expression set}
 \format{
 \preformatted{
 experimentData(eset):

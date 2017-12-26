@@ -1,9 +1,10 @@
-\name{ GSE30009_eset }
-\alias{ GSE30009_eset }
+\name{ GSE30009 }
+\alias{ GSE30009 }
 \docType{data}
 \title{ Multidrug resistance-linked gene signature predicts overall survival of patients with primary ovarian serous carcinoma. }
 \description{ This study assesses the ability of multidrug resistance (MDR)-associated gene expression patterns to predict survival in patients with newly diagnosed carcinoma of the ovary. The scope of this research differs substantially from that of previous reports, as a very large set of genes was evaluated whose expression has been shown to affect response to chemotherapy.We applied a customized TaqMan low density array, a highly sensitive and specific assay, to study the expression profiles of 380 MDR-linked genes in 80 tumor specimens collected at initial surgery to debulk primary serous carcinoma. The RNA expression profiles of these drug resistance genes were correlated with clinical outcomes.Leave-one-out cross-validation was used to estimate the ability of MDR gene expression to predict survival. Although gene expression alone does not predict overall survival (OS; P = 0.06), four covariates (age, stage, CA125 level, and surgical debulking) do (P = 0.03). When gene expression was added to the covariates, we found an 11-gene signature that provides a major improvement in OS prediction (log-rank statistic P < 0.003). The predictive power of this 11-gene signature was confirmed by dividing high- and low-risk patient groups, as defined by their clinical covariates, into four specific risk groups on the basis of expression levels.This study reveals an 11-gene signature that allows a more precise prognosis for patients with serous cancer of the ovary treated with carboplatin- and paclitaxel-based therapy. These 11 new targets offer opportunities for new therapies to improve clinical outcome in ovarian cancer. }
 \usage{data( GSE30009_eset )}
+\value{An expression set}
 \format{
 \preformatted{
 experimentData(eset):

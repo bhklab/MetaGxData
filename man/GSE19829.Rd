@@ -1,9 +1,10 @@
-\name{ GSE19829_eset }
-\alias{ GSE19829_eset }
+\name{ GSE19829 }
+\alias{ GSE19829 }
 \docType{data}
 \title{ Gene expression profile of BRCAness that correlates with responsiveness to chemotherapy and with outcome in patients with epithelial ovarian cancer. }
 \description{ To define a gene expression profile of BRCAness that correlates with chemotherapy response and outcome in epithelial ovarian cancer (EOC).A publicly available microarray data set including 61 patients with EOC with either sporadic disease or BRCA(1/2) germline mutations was used for development of the BRCAness profile. Correlation with platinum responsiveness was assessed in platinum-sensitive and platinum-resistant tumor biopsy specimens from six patients with BRCA germline mutations. Association with poly-ADP ribose polymerase (PARP) inhibitor responsiveness and with radiation-induced RAD51 foci formation (a surrogate of homologous recombination) was assessed in Capan-1 cell line clones. The BRCAness profile was validated in 70 patients enriched for sporadic disease to assess its association with outcome.The BRCAness profile accurately predicted platinum responsiveness in eight out of 10 patient-derived tumor specimens, and between PARP-inhibitor sensitivity and resistance in four out of four Capan-1 clones. [corrected] When applied to the 70 patients with sporadic disease, patients with the BRCA-like (BL) profile had improved disease-free survival (34 months v 15 months; log-rank P = .013) and overall survival (72 months v 41 months; log-rank P = .006) compared with patients with a non-BRCA-like (NBL) profile, respectively. The BRCAness profile maintained independent prognostic value in multivariate analysis, which controlled for other known clinical prognostic factors.The BRCAness profile correlates with responsiveness to platinum and PARP inhibitors and identifies a subset of sporadic patients with improved outcome. Additional evaluation of this profile as a predictive tool in patients with sporadic EOC is warranted. }
 \usage{data( GSE19829_eset )}
+\value{An expression set}
 \format{
 \preformatted{
 experimentData(eset):

@@ -1,9 +1,10 @@
-\name{ GSE8842_eset }
-\alias{ GSE8842_eset }
+\name{ GSE8842 }
+\alias{ GSE8842 }
 \docType{data}
 \title{ Analysis of gene expression in early-stage ovarian cancer. }
 \description{ Gene expression profile was analyzed in 68 stage I and 15 borderline ovarian cancers to determine if different clinical features of stage I ovarian cancer such as histotype, grade, and survival are related to differential gene expression.Tumors were obtained directly at surgery and immediately frozen in liquid nitrogen until analysis. Glass arrays containing 16,000 genes were used in a dual-color assay labeling protocol.Unsupervised analysis identified eight major patient partitions, one of which was statistically associated to overall survival, grading, and histotype and another with grading and histotype. Supervised analysis allowed detection of gene profiles clearly associated to histotype or to degree of differentiation. No difference was found between borderline and grade 1 tumors. As to recurrence, a subset of genes able to differentiate relapsers from nonrelapsers was identified. Among these, cyclin E and minichromosome maintenance protein 5 were found particularly relevant, as their expression was inversely correlated to progression-free survival (P = 0.00033 and 0.017, respectively).Specific molecular signatures define different histotypes and prognosis of stage I ovarian cancer. Mucinous and clear cells histotypes can be distinguished from the others regardless of tumor grade. Cyclin E and minichromosome maintenance protein 5, whose expression was found previously to be related to a bad prognosis of advanced ovarian cancer, appear to be potential prognostic markers in stage I ovarian cancer too, independent of other pathologic and clinical variables. }
 \usage{data( GSE8842_eset )}
+\value{An expression set}
 \format{
 \preformatted{
 experimentData(eset):

@@ -1,9 +1,10 @@
-\name{ GSE14764_eset }
-\alias{ GSE14764_eset }
+\name{ GSE14764 }
+\alias{ GSE14764 }
 \docType{data}
 \title{ A prognostic gene expression index in ovarian cancer - validation across different independent data sets. }
 \description{ Ovarian carcinoma has the highest mortality rate among gynaecological malignancies. In this project, we investigated the hypothesis that molecular markers are able to predict outcome of ovarian cancer independently of classical clinical predictors, and that these molecular markers can be validated using independent data sets. We applied a semi-supervised method for prediction of patient survival. Microarrays from a cohort of 80 ovarian carcinomas (TOC cohort) were used for the development of a predictive model, which was then evaluated in an entirely independent cohort of 118 carcinomas (Duke cohort). A 300-gene ovarian prognostic index (OPI) was generated and validated in a leave-one-out approach in the TOC cohort (Kaplan-Meier analysis, p = 0.0087). In a second validation step, the prognostic power of the OPI was confirmed in an independent data set (Duke cohort, p = 0.0063). In multivariate analysis, the OPI was independent of the post-operative residual tumour, the main clinico-pathological prognostic parameter with an adjusted hazard ratio of 6.4 (TOC cohort, CI 1.8-23.5, p = 0.0049) and 1.9 (Duke cohort, CI 1.2-3.0, p = 0.0068). We constructed a combined score of molecular data (OPI) and clinical parameters (residual tumour), which was able to define patient groups with highly significant differences in survival. The integrated analysis of gene expression data as well as residual tumour can be used for optimized assessment of the prognosis of platinum-taxol-treated ovarian cancer. As traditional treatment options are limited, this analysis may be able to optimize clinical management and to identify those patients who would be candidates for new therapeutic strategies. }
 \usage{data( GSE14764_eset )}
+\value{An expression set}
 \format{
 \preformatted{
 experimentData(eset):

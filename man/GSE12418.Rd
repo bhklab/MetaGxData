@@ -1,9 +1,10 @@
-\name{ GSE12418_eset }
-\alias{ GSE12418_eset }
+\name{ GSE12418 }
+\alias{ GSE12418 }
 \docType{data}
 \title{ Expression analysis of stage III serous ovarian adenocarcinoma distinguishes a sub-group of survivors. }
 \description{ It is difficult to predict the clinical outcome for patients with ovarian cancer. However, the use of biomarkers as additional prognostic factors may improve the outcome for these patients. In order to find novel candidate biomarkers, differences in gene expressions were analysed in 54 stage III serous ovarian adenocarcinomas with oligonucleotide microarrays containing 27,000 unique probes. The microarray data was verified with quantitative real-time polymerase chain reaction for the genes TACC1, MUC5B and PRAME. Using hierarchical cluster analysis we detected a sub-group that included 60\% of the survivors. The gene expressions in tumours from patients in this sub-group of survivors were compared with the remaining tumours, and 204 genes were found to be differently expressed. We conclude that the sub-group of survivors might represent patients with favourable tumour biology and sensitivity to treatment. A selection of the 204 genes might be used as a predictive model to distinguish patients within and outside of this group. Alternative chemotherapy strategies could then be offered as first-line treatment, which may lead to improvements in the clinical outcome for these patients. }
 \usage{data( GSE12418_eset )}
+\value{An expression set}
 \format{
 \preformatted{
 experimentData(eset):

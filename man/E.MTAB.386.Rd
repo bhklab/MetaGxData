@@ -1,9 +1,10 @@
-\name{ E.MTAB.386_eset }
-\alias{ E.MTAB.386_eset }
+\name{ E.MTAB.386 }
+\alias{ E.MTAB.386 }
 \docType{data}
 \title{ Angiogenic mRNA and microRNA gene expression signature predicts a novel subtype of serous ovarian cancer. }
 \description{ Ovarian cancer is the fifth leading cause of cancer death for women in the U.S. and the seventh most fatal worldwide. Although ovarian cancer is notable for its initial sensitivity to platinum-based therapies, the vast majority of patients eventually develop recurrent cancer and succumb to increasingly platinum-resistant disease. Modern, targeted cancer drugs intervene in cell signaling, and identifying key disease mechanisms and pathways would greatly advance our treatment abilities. In order to shed light on the molecular diversity of ovarian cancer, we performed comprehensive transcriptional profiling on 129 advanced stage, high grade serous ovarian cancers. We implemented a, re-sampling based version of the ISIS class discovery algorithm (rISIS: robust ISIS) and applied it to the entire set of ovarian cancer transcriptional profiles. rISIS identified a previously undescribed patient stratification, further supported by micro-RNA expression profiles, and gene set enrichment analysis found strong biological support for the stratification by extracellular matrix, cell adhesion, and angiogenesis genes. The corresponding "angiogenesis signature" was validated in ten published independent ovarian cancer gene expression datasets and is significantly associated with overall survival. The subtypes we have defined are of potential translational interest as they may be relevant for identifying patients who may benefit from the addition of anti-angiogenic therapies that are now being tested in clinical trials. }
 \usage{data( E.MTAB.386_eset )}
+\value{An expression set}
 \format{
 \preformatted{
 experimentData(eset):

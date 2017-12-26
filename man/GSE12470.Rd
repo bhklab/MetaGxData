@@ -1,9 +1,10 @@
-\name{ GSE12470_eset }
-\alias{ GSE12470_eset }
+\name{ GSE12470 }
+\alias{ GSE12470 }
 \docType{data}
 \title{ Gene expression profiling of advanced-stage serous ovarian cancers distinguishes novel subclasses and implicates ZEB2 in tumor progression and prognosis. }
 \description{ To elucidate the mechanisms of rapid progression of serous ovarian cancer, gene expression profiles from 43 ovarian cancer tissues comprising eight early stage and 35 advanced stage tissues were carried out using oligonucleotide microarrays of 18,716 genes. By non-negative matrix factorization analysis using 178 genes, which were extracted as stage-specific genes, 35 advanced stage cases were classified into two subclasses with superior (n = 17) and poor (n = 18) outcome evaluated by progression-free survival (log rank test, P = 0.03). Of the 178 stage-specific genes, 112 genes were identified as showing different expression between the two subclasses. Of the 48 genes selected for biological function by gene ontology analysis or Ingenuity Pathway Analysis, five genes (ZEB2, CDH1, LTBP2, COL16A1, and ACTA2) were extracted as candidates for prognostic factors associated with progression-free survival. The relationship between high ZEB2 or low CDH1 expression and shorter progression-free survival was validated by real-time RT-PCR experiments of 37 independent advanced stage cancer samples. ZEB2 expression was negatively correlated with CDH1 expression in advanced stage samples, whereas ZEB2 knockdown in ovarian adenocarcinoma SKOV3 cells resulted in an increase in CDH1 expression. Multivariate analysis showed that high ZEB2 expression was independently associated with poor prognosis. Furthermore, the prognostic effect of E-cadherin encoded by CDH1 was verified using immunohistochemical analysis of an independent advanced stage cancer samples set (n = 74). These findings suggest that the expression of epithelial-mesenchymal transition-related genes such as ZEB2 and CDH1 may play important roles in the invasion process of advanced stage serous ovarian cancer. }
 \usage{data( GSE12470_eset )}
+\value{An expression set}
 \format{
 \preformatted{
 experimentData(eset):

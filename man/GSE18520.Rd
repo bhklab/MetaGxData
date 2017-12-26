@@ -1,9 +1,10 @@
-\name{ GSE18520_eset }
-\alias{ GSE18520_eset }
+\name{ GSE18520 }
+\alias{ GSE18520 }
 \docType{data}
 \title{ A gene signature predictive for outcome in advanced ovarian cancer identifies a survival factor: microfibril-associated glycoprotein 2. }
 \description{ Advanced stage papillary serous tumors of the ovary are responsible for the majority of ovarian cancer deaths, yet the molecular determinants modulating patient survival are poorly characterized. Here, we identify and validate a prognostic gene expression signature correlating with survival in a series of microdissected serous ovarian tumors. Independent evaluation confirmed the association of a prognostic gene microfibril-associated glycoprotein 2 (MAGP2) with poor prognosis, whereas in vitro mechanistic analyses demonstrated its ability to prolong tumor cell survival and stimulate endothelial cell motility and survival via the alpha(V)beta(3) integrin receptor. Increased MAGP2 expression correlated with microvessel density suggesting a proangiogenic role in vivo. Thus, MAGP2 may serve as a survival-associated target. }
 \usage{data( GSE18520_eset )}
+\value{An expression set}
 \format{
 \preformatted{
 experimentData(eset):

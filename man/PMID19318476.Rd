@@ -1,9 +1,10 @@
-\name{ PMID19318476_eset }
-\alias{ PMID19318476_eset }
+\name{ PMID19318476 }
+\alias{ PMID19318476 }
 \docType{data}
 \title{ Microarray analysis of early stage serous ovarian cancers shows profiles predictive of favorable outcome. }
 \description{ Although few women with advanced serous ovarian cancer are cured, detection of the disease at an early stage is associated with a much higher likelihood of survival. We previously used gene expression array analysis to distinguish subsets of advanced cancers based on disease outcome. In the present study, we report on gene expression of early-stage cancers and validate our prognostic model for advanced-stage cancers.Frozen specimens from 39 stage I/II, 42 stage III/IV, and 20 low malignant potential cancers were obtained from four different sites. A linear discriminant model was used to predict survival based upon array data.We validated the late-stage survival model and show that three of the most differentially expressed genes continue to be predictive of outcome. Most early-stage cancers (38 of 39 invasive, 15 of 20 low malignant potential) were classified as long-term survivors (median probabilities 0.97 and 0.86). MAL, the most differentially expressed gene, was further validated at the protein level and found to be an independent predictor of poor survival in an unselected group of advanced serous cancers (P = 0.0004).These data suggest that serous ovarian cancers detected at an early stage generally have a favorable underlying biology similar to advanced-stage cases that are long-term survivors. Conversely, most late-stage ovarian cancers seem to have a more virulent biology. This insight suggests that if screening approaches are to succeed it will be necessary to develop approaches that are able to detect these virulent cancers at an early stage. }
 \usage{data( PMID19318476_eset )}
+\value{An expression set}
 \format{
 \preformatted{
 experimentData(eset):

@@ -1,9 +1,10 @@
-\name{ GSE30161_eset }
-\alias{ GSE30161_eset }
+\name{ GSE30161 }
+\alias{ GSE30161 }
 \docType{data}
 \title{ Multi-gene expression predictors of single drug responses to adjuvant chemotherapy in ovarian carcinoma: predicting platinum resistance. }
 \description{ Despite advances in radical surgery and chemotherapy delivery, ovarian cancer is the most lethal gynecologic malignancy. Standard therapy includes treatment with platinum-based combination chemotherapies yet there is no biomarker model to predict their responses to these agents. We here have developed and independently tested our multi-gene molecular predictors for forecasting patients' responses to individual drugs on a cohort of 55 ovarian cancer patients. To independently validate these molecular predictors, we performed microarray profiling on FFPE tumor samples of 55 ovarian cancer patients (UVA-55) treated with platinum-based adjuvant chemotherapy. Genome-wide chemosensitivity biomarkers were initially discovered from the in vitro drug activities and genomic expression data for carboplatin and paclitaxel, respectively. Multivariate predictors were trained with the cell line data and then evaluated with a historical patient cohort. For the UVA-55 cohort, the carboplatin, taxol, and combination predictors significantly stratified responder patients and non-responder patients (p = 0.019, 0.04, 0.014) with sensitivity = 91\%, 96\%, 93 and NPV = 57\%, 67\%, 67\% in pathologic clinical response. The combination predictor also demonstrated a significant survival difference between predicted responders and non-responders with a median survival of 55.4 months vs. 32.1 months. Thus, COXEN single- and combination-drug predictors successfully stratified platinum resistance and taxane response in an independent cohort of ovarian cancer patients based on their FFPE tumor samples. }
 \usage{data( GSE30161_eset )}
+\value{An expression set}
 \format{
 \preformatted{
 experimentData(eset):
